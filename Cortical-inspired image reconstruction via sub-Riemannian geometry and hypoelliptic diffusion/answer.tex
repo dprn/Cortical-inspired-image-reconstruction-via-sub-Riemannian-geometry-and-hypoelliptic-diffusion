@@ -1,0 +1,108 @@
+\documentclass{amsart}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{color}
+
+
+\newcommand{\dario}{\textcolor{magenta}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%``good'' and ``bad''
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\blue}{\color{blue}}
+\newcommand{\red}{\color{red}}
+
+\title[Answer to the reviewers  comments]{Answer to the reviewers comments to the paper ``Cortical-inspired image reconstruction via sub-Riemannian geometry and hypoelliptic diffusion''}
+
+\begin{document}
+
+
+\maketitle
+
+We are very thankful to the reviewers for their valuable remarks. 
+We made the corresponding corrections. 
+
+\section*{Reviewer 2}
+
+We corrected all typos remarked by the 2nd reviewer. 
+
+
+\section*{Reviewer 1}
+
+1. We added new references suggested by the reviewer and text 
+\textcolor{blue}{(the blue paragraphs in the beginning of Introduction)} 
+in order to explain what is the contributions of the proposed approaches 
+with respect to existing previous works.
+
+-- \textcolor{red}{
+{\it What are the novelty? Is it supposed to be better? Faster?
+} -- I have no answer, 
+I have just explain why does our diffusion differ from other anisotropic diffusions described in the works 
+suggested by the reviewer.
+}
+
+\medskip 
+
+2. 
+{\it More generally, I found that the paper fails to really explain what is the contributions of
+the proposed approaches with respect to existing previous works. Inpainting (using
+variational methods) is a huge field, and the paper does not provide links or connection
+with other works. It should somehow explain more clearly, put aside mathematical rigor
+and connection to geometry, what are the contributions.}
+
+We explained the main difference between our our hypoelliptic diffusion and other anisotropic diffusions, 
+we provided connection with other works known to us by adding some additional text 
+\textcolor{blue}{(the blue paragraphs in the beginning of Introduction)}. 
+However, in this short conference paper we do not pretend to give a survey and comparison of our algorithms with all existing methods.
+
+\medskip 
+
+3. 
+{\it 
+The numerical results are (put aside fig 9 right) restricted to the filling-in small holes
+(either thin elongated holes, or random points). Does this suggest that the proposed
+methods are not capable of handling large missing regions without introducing too much
+blurring? 
+
+\textcolor{red}{
+Can this be predicted from the theory? -- {\rm I have no answer !} 
+}
+
+Some anisotropic diffusion methods (used for instance in [Galic, Tschumperle]) 
+seem to be capable of doing so, by introducing stronger (often maybe non convex) contrast 
+enhancing terms (or non variational evolution with some reaction term). 
+
+How would this fits into the proposed framework ? In any case,
+if this is a limitation of the method, it should be mentioned.
+}
+
+\medskip 
+
+The existence of large ``holes'' (i.e., regions without noncorrupted pixels) is an obstacle for 
+good quality of reconstruction for any inpainting method. For good quality of reconstruction, 
+non-corrupted pixels must be well-distributed on the image, especially in regions containing 
+important small details (which, in fact, can be totally disappeared after corruption). 
+Our method is not an exception, and the presence of large holes (especially if they cover essential small details of the image) yields falsifications of inpainting. 
+We discussed this effect in our previous paper ``Highly Corrupted Image Inpainting Through Hypoelliptic Diffusion'' (see especially Conclusion and Fig.~10).
+
+\textcolor{blue}{
+However, now we added a small text about this problem in the end of Section~4.3.
+}
+
+It is worst observing that the paper [Galic] presents reconstructions of images with well distributed 
+non-corrupted pixels (Fig.~1, Fig.~4), which are comparable with ours (Fig.~14 and Fig.~15 of our paper). 
+The paper [Tschumperle] contains images with another type of corruption (Fig.~6, right down), but this image 
+does not contain essential small details, therefore the largest diameter of corrupted parts (white squares) 
+does not yield a serious falsification of the inpainting. 
+
+
+\end{document}
+
+
+
