@@ -678,6 +678,30 @@ The results of this comparison are given in Figure~\ref{fig:comparison-facciolo}
 \end{figure}
 }
 
+{\color{magenta}
+\section{Numerical experiments}
+
+In order to objectively evaluate the performance of the proposed algorithm, we chose, as in \cite{GWWBBS}, to use a $256\times 256$ cropped version of the Lena image. We consider the \emph{average absolute error (AEE)} and the \emph{mean squared error (MSE)}, given by
+\begin{equation}
+  \operatorname{AAE}(f,g) = \frac{1}{N}\sum_{i,j} |f_{i,j}-g_{i,j}|,\qquad
+  \operatorname{MSE}(f,g) = \frac{1}{N}\sum_{i,j} |f_{i,j}-g_{i,j}|^2,
+\end{equation}
+where $N$ is the total number of pixels in the images $f=(f_{i,j})_{i,j}$ and $g=(g_{i,j})_{i,j}$. Then, our chosen metrics for the quality of a reconstruction $f$ of a corrupted version of the cropped Lena image $g$ are
+\begin{equation}
+  \widetilde{\operatorname{AAE}}(f,g) = \min_{a,b\in\mathbb R}\operatorname{AAE}(a f+b,g),\qquad
+  \widetilde{\operatorname{MSE}}(f,g) = \min_{a,b\in\mathbb R}\operatorname{MSE}(a f+b,g).
+\end{equation}
+This choice allows to take into account possible differences in scaling induced by the AHE algorithm. The results for randomly corrupted version of the starting image, with an increasing percentage of pixels removed, are presented in Figure~\ref{fig:graph}. 
+
+We remark that, taking into account the fact that images in \cite{GWWBBS} are parametrized on the interval $[0,255]$ while we chose $[0,1]$, the values obtained for a $98\%$ corrupted image are $\widetilde{\operatorname{AAE}}(f,g)=14.9$ and $\widetilde{\operatorname{MSE}}(f,g)=556.7$. In particular, the first one is slightly worse than the algorithm proposed in \cite{GWWBBS}, while the second one is better.
+
+\begin{figure}
+  \includegraphics[width=.4\textwidth]{graphAEE-MSE}
+  \caption{Results...}
+  \label{fig:graph}
+\end{figure}
+}
+
 \section{Conclusions}
 
 In this paper we presented several image inpainting algorithms based on hypoelliptic diffusion. Although pure hypoelliptic diffusion allows to obtain reasonable inpaints of images with small corrupted regions, we showed that coupling such diffusion with heuristic methods exploiting the full knowledge of the location of the corruption allows to obtain very efficient reconstructions. 
