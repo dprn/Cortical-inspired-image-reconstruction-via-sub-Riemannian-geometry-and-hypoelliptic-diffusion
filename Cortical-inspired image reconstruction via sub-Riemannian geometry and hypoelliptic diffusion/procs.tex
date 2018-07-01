@@ -150,7 +150,7 @@ Finally, in the third and last part, Section~\ref{s-corr}, we collect some resul
 
 We conclude this brief introduction by observing that, experimentally, the threshold of the maximal amount of corruption that the pure hypoelliptic diffusion method can manage looks very close to the threshold of corruption above which our brain can recognize the underlying image. This fact could be seen as a validation of the CPS model with pure hypoelliptic diffusion. On the other hand, the methods presented in the last part completely transcend such problem, thus suggesting that, although based on neurophysiological ideas, they do not reflect any real mechanism of V1.
 
-While the results obtained with our methods, are comparable with the state of the art in image inpainting, here our purpose is not to provide a comparison with the existing methods, but to present how ideas from neurophysiology can be exploited for image processing tasks. An interesting line of investigation would be to use our framework together with other methods based on totally different ideas as for instance exemplar-based methods, e.g., \cite{Bredies13,Facciolo}.
+While the results obtained with our methods, are comparable with the state of the art in image inpainting, here our purpose is not to provide a comparison with the existing methods, but to present how ideas from neurophysiology can be exploited for image processing tasks. {\color{red} a brief comparison is presented in section} An interesting line of investigation would be to use our framework together with other methods based on totally different ideas as for instance exemplar-based methods, e.g., \cite{Bredies13,Facciolo}.
 
 
 
@@ -681,12 +681,15 @@ This effect is discussed in \cite{ahe}.
 {\color{magenta}
 \section{Numerical experiments}
 
-In order to objectively evaluate the performance of the proposed algorithm, we consider, we compute the following quantities for the quality of a reconstruction $f$ of a corrupted version of an image $g$:
+An objective comparison of the quality of the reconstruction is a problem of well-known difficulty, see, for instance, [34, 40, 42]. Moreover, such
+a measure will forcibly depend on the expected application.
+Nevertheless, we chose to consider a variant of the metric used in \cite{GWWBBS}.
+In particular, we compute the following quantities for the quality of a reconstruction $f$ of a corrupted version of an image $g$:
 \begin{equation}\label{eq:metric}
   \widetilde{\operatorname{AAE}}(f,g) = \min_{a,b\in\mathbb R}\operatorname{AAE}(a f+b,g),\qquad
   \widetilde{\operatorname{MSE}}(f,g) = \min_{a,b\in\mathbb R}\operatorname{MSE}(a f+b,g).
 \end{equation}
-Here, we used the \emph{average absolute error (AEE)} and the \emph{mean squared error (MSE)}, as in \cite{GWWBBS}, which are given by
+Here, we used the \emph{average absolute error (AEE)} and the \emph{mean squared error (MSE)}, as in \cite{GWWBBS}, given by
 \begin{equation}
   \operatorname{AAE}(f,g) = \frac{1}{N}\sum_{i,j} |f_{i,j}-g_{i,j}|,\qquad
   \operatorname{MSE}(f,g) = \frac{1}{N}\sum_{i,j} |f_{i,j}-g_{i,j}|^2,
@@ -696,6 +699,11 @@ The purpose of the additional minimizing procedure in \eqref{eq:metric} is to ta
 
 In Figure~\ref{fig:graph} we present the results obtained on a $256\times 256$ cropped version of the Lena image (the same used in \cite{GWWBBS}), with increasing percentages of corruption. 
 We remark that, taking into account the fact that images in \cite{GWWBBS} are parametrized on the interval $[0,255]$ while we chose $[0,1]$, the values obtained for a $98\%$ corrupted image are $\widetilde{\operatorname{AAE}}(f,g)=14.9$ and $\widetilde{\operatorname{MSE}}(f,g)=556.7$. (See Figure~\ref{fig:lena-AEE}.) In particular, the first one is slightly worse than the edge-enhancing diffusion presented in \cite[Table~1]{GWWBBS}, while the second one is better.
+One could think this comparison not to be fair, due to the additional minimization procedure in \eqref{eq:metric}, but such minimization does not seem necessary in the case of \cite{GWWBBS}, since the algorithms used in that paper exactly preserve the values of the non-corrupted pixels.
+
+{\color{red} state of the art}
+
+{\color{red} referenza metodo di Facciolo}
 
 \begin{figure}
   \begin{minipage}{.4\textwidth}
@@ -709,7 +717,7 @@ We remark that, taking into account the fact that images in \cite{GWWBBS} are pa
   \includegraphics[width=.4\textwidth]{imgs/lena-zoom-98-corr}$\quad$
   \includegraphics[width=.4\textwidth]{imgs/lena-zoom-98-rec}
   \caption{Reconstruction of cropped version of Lena with 98\% of pixels missing. Compare with \cite[Figure~1]{GWWBBS}.}
-  \label{fig:graph}    
+  \label{fig:lena-AEE}    
   \end{minipage}
 \end{figure}
 }
