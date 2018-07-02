@@ -150,7 +150,7 @@ Finally, in the third and last part, Section~\ref{s-corr}, we collect some resul
 
 We conclude this brief introduction by observing that, experimentally, the threshold of the maximal amount of corruption that the pure hypoelliptic diffusion method can manage looks very close to the threshold of corruption above which our brain can recognize the underlying image. This fact could be seen as a validation of the CPS model with pure hypoelliptic diffusion. On the other hand, the methods presented in the last part completely transcend such problem, thus suggesting that, although based on neurophysiological ideas, they do not reflect any real mechanism of V1.
 
-While the results obtained with our methods, are comparable with the state of the art in image inpainting, here our purpose is not to provide a comparison with the existing methods, but to present how ideas from neurophysiology can be exploited for image processing tasks. {\color{red} a brief comparison is presented in section} An interesting line of investigation would be to use our framework together with other methods based on totally different ideas as for instance exemplar-based methods, e.g., \cite{Bredies13,Facciolo}.
+While the results obtained with our methods, are comparable with the state of the art in image inpainting, here our purpose is not to provide a comparison with the existing methods, but to present how ideas from neurophysiology can be exploited for image processing tasks. {\color{magenta} Nevertheless, a brief study of the quality of the reconstructions is presented in Section~\ref{sec:comparison}, together with a comparison with some similar methods, as those presented in \cite{cao,GWWBBS}.} An interesting line of investigation would be to use our framework together with other methods based on totally different ideas as for instance exemplar-based methods, e.g., \cite{Bredies13,Facciolo}.
 
 
 
@@ -492,17 +492,17 @@ Finally, in Figure~\ref{fig:PH-no-val}, we show the hypoelliptic evolution when 
 \end{figure}
 
 \begin{figure}
-  \includegraphics[height=3.5cm]{imgs/lena-circle}\qquad
-  \includegraphics[height=3.5cm]{imgs/lena-pi2}\qquad
-  \includegraphics[height=3.5cm]{imgs/lena-3pi2}
+  \includegraphics[height=3.3cm]{imgs/lena-circle}\qquad
+  \includegraphics[height=3.3cm]{imgs/lena-pi2}\qquad
+  \includegraphics[height=3.3cm]{imgs/lena-3pi2}
   \caption{Hypoelliptic diffusion of lift with fixed angle $\theta_0$. \emph{Left:} original image. \emph{Middle:}  $\theta_0=\frac{\pi}4$. \emph{Right:} $\theta_0=\frac{3\pi}4$. In particular, observe that only the white stripe perpendicular to $\theta_0$ is filled, while the other is preserved.  }
   \label{fig:PH-theta0}
 \end{figure}
 
 \begin{figure}
-  \includegraphics[height=3.5cm]{imgs/eye}\qquad
-  \includegraphics[height=3.5cm]{imgs/napo-orig}\qquad
-  \includegraphics[height=3.5cm]{imgs/napoleon-eye}
+  \includegraphics[height=3.3cm]{imgs/eye}\qquad
+  \includegraphics[height=3.3cm]{imgs/napo-orig}\qquad
+  \includegraphics[height=3.3cm]{imgs/napoleon-eye}
   \caption{Hypoelliptic diffusion with lift $\tilde{ L}_f g = \delta_{Sf}g$, where $f$ and $g$ are, respectively, the first and second images. Observe that we recover the contours of the first image only through the surface $Sf$. Here we chose $\beta^2 = 0.1$ and $T=1$.}
   \label{fig:PH-no-val}
 \end{figure}
@@ -540,19 +540,19 @@ Moreover, after each step, $G(r+1)$ and $B(r+1)$ are obtained from $G(r)$ and $B
 Some reconstruction results via the Dynamic Restoration procedure are presented in Figures~\ref{fig:masking} and \ref{fig:masking-highly}. Notice that restorations obtained via this method are much better than those obtained via pure hypoelliptic diffusion. In particular, the DR procedure gives reasonable results even on highly corrupted images, as shown in Figure~\ref{fig:masking-highly}.
 
 \begin{figure}
-  \includegraphics[height=3.5cm]{imgs/lena-diag}\qquad
-  \includegraphics[height = 3.5cm]{imgs/lena-masking-30}\qquad
-  \includegraphics[height = 3.5cm]{imgs/lena-masking-120}
+  \includegraphics[height=3.3cm]{imgs/lena-diag}\qquad
+  \includegraphics[height = 3.3cm]{imgs/lena-masking-30}\qquad
+  \includegraphics[height = 3.3cm]{imgs/lena-masking-120}
   \caption{Inpaintings via {hypoelliptic diffusion with} the DR procedure.
   \emph{Left: }original image. \emph{Middle:}  $n=30$ steps. \emph{Right: }$n=120$ steps.}
   \label{fig:masking}
 \end{figure}
 
 \begin{figure}
-  \includegraphics[height = 3.5cm]{imgs/lena-random-30}
-  \includegraphics[height = 3.5cm]{imgs/lena-random-30-mask}\qquad
-  \includegraphics[height = 3.5cm]{imgs/lena-random-80}
-  \includegraphics[height = 3.5cm]{imgs/lena-random-80-mask}
+  \includegraphics[height = 3.3cm]{imgs/lena-random-30}
+  \includegraphics[height = 3.3cm]{imgs/lena-random-30-mask}\qquad
+  \includegraphics[height = 3.3cm]{imgs/lena-random-80}
+  \includegraphics[height = 3.3cm]{imgs/lena-random-80-mask}
   \caption{Two inpaintings via {hypoelliptic diffusion with} the DR procedure of images missing, respectively, 30\% and 80\% of pixels. For both images we chose $T=1$ and $n=60$ steps. Notice how in the second image, the big corruption makes it difficult to correctly compute the gradient.}
   \label{fig:masking-highly}
 \end{figure}
@@ -602,12 +602,12 @@ This suggests that, in order to obtain a good inpainting algorithm for highly co
 This is an essential component of the algorithm presented in the next section.
 
 \begin{figure}
-  \includegraphics[height=3.5cm]{imgs/lena-diag}
-  \includegraphics[height = 3.5cm]{imgs/lena-varying}\qquad
-  \includegraphics[height=3.5cm]{imgs/lena-random-30}
-  \includegraphics[height = 3.5cm]{imgs/lena-random-30-varying}\\ \vspace{.5em}
-    \includegraphics[height=3.5cm]{imgs/lena-random-80}
-  \includegraphics[height = 3.5cm]{imgs/lena-random-80-varying}\qquad
+  \includegraphics[height=3.3cm]{imgs/lena-diag}
+  \includegraphics[height = 3.3cm]{imgs/lena-varying}\qquad
+  \includegraphics[height=3.3cm]{imgs/lena-random-30}
+  \includegraphics[height = 3.3cm]{imgs/lena-random-30-varying}\\ \vspace{.5em}
+    \includegraphics[height=3.3cm]{imgs/lena-random-80}
+  \includegraphics[height = 3.3cm]{imgs/lena-random-80-varying}\qquad
   \caption{Three inpaintings via hypoelliptic diffusion with varying coefficients and the DR procedure: with small diagonal corruptions, and with 30\% and 80\% of pixels randomly removed. Compare with Figures~\ref{fig:PH} and \ref{fig:masking}.}
   \label{fig:varying}
 \end{figure}
@@ -654,8 +654,8 @@ This effect is discussed in \cite{ahe}.
 
 \begin{figure*}[t]
 \begin{center}
-%  \includegraphics[height = 3.5cm]{imgs/lena-random-80-ahe}\qquad
-%  \includegraphics[height = 3.5cm]{imgs/lena-random-90-ahe}
+%  \includegraphics[height = 3.3cm]{imgs/lena-random-80-ahe}\qquad
+%  \includegraphics[height = 3.3cm]{imgs/lena-random-90-ahe}
   \includegraphics[height = 4.0cm]{imgs/lena-random-80-ahe}\qquad
   \includegraphics[height = 4.0cm]{imgs/lena-random-90-ahe}
 \caption{Inpaintings via the AHE algorithm of highly corrupted images with, respectively, 80\% and 90\% of pixels missing. Compare with Figures~\ref{fig:masking} and \ref{fig:varying}.}
@@ -679,17 +679,17 @@ This effect is discussed in \cite{ahe}.
 %}
 
 {\color{magenta}
-\section{Numerical experiments}
+\section{Numerical experiments}\label{sec:comparison}
 
 An objective comparison of the quality of the reconstruction is a problem of well-known difficulty, see, for instance, [34, 40, 42]. Moreover, such
 a measure will forcibly depend on the expected application.
-Nevertheless, we chose to consider a variant of the metric used in \cite{GWWBBS}.
-In particular, we compute the following quantities for the quality of a reconstruction $f$ of a corrupted version of an image $g$:
+Nevertheless, in this section we present some results obtained with a variant of the metric used in \cite{GWWBBS}.
+In particular, we consider the following quantities for the quality of a reconstruction $f$ of a corrupted version of an image $g$:
 \begin{equation}\label{eq:metric}
   \widetilde{\operatorname{AAE}}(f,g) = \min_{a,b\in\mathbb R}\operatorname{AAE}(a f+b,g),\qquad
   \widetilde{\operatorname{MSE}}(f,g) = \min_{a,b\in\mathbb R}\operatorname{MSE}(a f+b,g).
 \end{equation}
-Here, we used the \emph{average absolute error (AEE)} and the \emph{mean squared error (MSE)}, as in \cite{GWWBBS}, given by
+Here, we used the \emph{average absolute error (AEE)} and the \emph{mean squared error (MSE)}, as defined in \cite{GWWBBS}, given by
 \begin{equation}
   \operatorname{AAE}(f,g) = \frac{1}{N}\sum_{i,j} |f_{i,j}-g_{i,j}|,\qquad
   \operatorname{MSE}(f,g) = \frac{1}{N}\sum_{i,j} |f_{i,j}-g_{i,j}|^2,
@@ -701,31 +701,38 @@ In Figure~\ref{fig:graph} we present the results obtained on a $256\times 256$ c
 We remark that, taking into account the fact that images in \cite{GWWBBS} are parametrized on the interval $[0,255]$ while we chose $[0,1]$, the values obtained for a $98\%$ corrupted image are $\widetilde{\operatorname{AAE}}(f,g)=14.9$ and $\widetilde{\operatorname{MSE}}(f,g)=556.7$. (See Figure~\ref{fig:lena-AEE}.) In particular, the first one is slightly worse than the edge-enhancing diffusion presented in \cite[Table~1]{GWWBBS}, while the second one is better.
 One could think this comparison not to be fair, due to the additional minimization procedure in \eqref{eq:metric}, but such minimization does not seem necessary in the case of \cite{GWWBBS}, since the algorithms used in that paper exactly preserve the values of the non-corrupted pixels.
 
-{\color{red} state of the art}
-
-{\color{red} referenza metodo di Facciolo}
-
 \begin{figure}
-  \begin{minipage}{.4\textwidth}
+  \begin{minipage}{.5\textwidth}
   \centering
-  \includegraphics[width=.9\textwidth]{imgs/graphAEE-MSE}
+  \includegraphics[width=.7\textwidth]{imgs/graphAEE-MSE}
   \caption{Quality of the reconstruction for a cropped version of Lena with increasing percentages of random corruption.}
   \label{fig:graph}    
   \end{minipage} 
-  \begin{minipage}{.55\textwidth}
+  \begin{minipage}{.48\textwidth}
   \centering
-  \includegraphics[width=.4\textwidth]{imgs/lena-zoom-98-corr}$\quad$
-  \includegraphics[width=.4\textwidth]{imgs/lena-zoom-98-rec}
+  \includegraphics[height=3.3cm]{imgs/lena-zoom-98-corr}\qquad
+  \includegraphics[height=3.3cm]{imgs/lena-zoom-98-rec}
   \caption{Reconstruction of cropped version of Lena with 98\% of pixels missing. Compare with \cite[Figure~1]{GWWBBS}.}
   \label{fig:lena-AEE}    
   \end{minipage}
+\end{figure}
+
+Finally, in Figure~\ref{fig:masnou}, we present a comparison of two reconstructions, one obtained with the AHE algorithm, denoted by $f_1$, and the other via the methods in \cite{cao} (courtesy of S.\ Masnou), denoted by $f_2$. We remark that, in this case, we have $\widetilde{AEE}(f_1,g)\sim 0.09$ and $\widetilde{MSE}(f_1,g)\sim 0.05$. These differ from $\widetilde{AEE}(f_2,g)$ and $\widetilde{MSE}(f_2,g)$ by a factor of $10^{-9}$ and $10^{-5}$, respectively.
+
+\begin{figure}
+  \includegraphics[height = 3.3cm]{imgs/eye-corr-white}\qquad
+  \includegraphics[height = 3.3cm]{imgs/eye-ahe}\qquad
+  \includegraphics[height = 3.3cm]{imgs/masnou}
+  \caption{Comparison of reconstruction of the image to the left with the AHE algorithm (\emph{middle}) and the methods in \cite{cao} (\emph{right}).}
+  \label{fig:masnou}
 \end{figure}
 }
 
 \section{Conclusions}
 
 In this paper we presented several image inpainting algorithms based on hypoelliptic diffusion. Although pure hypoelliptic diffusion allows to obtain reasonable inpaints of images with small corrupted regions, we showed that coupling such diffusion with heuristic methods exploiting the full knowledge of the location of the corruption allows to obtain very efficient reconstructions. 
-Observe that the techniques presented in this paper can be applied to color images, simply by treating separately the three color channels. Some examples are provided in Figure~\ref{fig:color-images}.
+\textcolor{magenta}{In particular, in Section~\ref{sec:comparison} we showed that the final method we presented, the AHE algorithm, yields reconstructions that are on par with the current state-of-the-art in local PDE-based methods.}
+We also mention that the techniques presented in this paper can be applied to color images, simply by treating separately the three color channels. Some examples are provided in Figure~\ref{fig:color-images}.
 
 It is interesting to notice that when the image is so corrupted that our visual system is not able to recognize it, as it happens, for instance, for the corrupted image presented in Figure~\ref{fig:comparison}, the use of pure hypoelliptic diffusion does not help it.
 This fact can be interpreted as a validation of the CPS model with pure hypoelliptic diffusion. On the contrary, as already pointed out, both the DR procedure and the AHE algorithm produce reconstructions that go beyond the capabilities of our visual system.
