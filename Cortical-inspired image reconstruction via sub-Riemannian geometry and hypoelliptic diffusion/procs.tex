@@ -700,7 +700,7 @@ where $N$ is the total number of pixels in the images $f=(f_{i,j})_{i,j}$ and $g
 The purpose of the additional minimizing procedure in \eqref{eq:metric} is to take into account possible differences in scaling induced by the AHE algorithm. 
 
 In Figure~\ref{fig:graph} we present the results obtained on a $256\times 256$ cropped version of the Lena image (the same used in \cite{GWWBBS}), with increasing percentages of corruption. 
-We remark that, taking into account the fact that images in \cite{GWWBBS} are parametrized on the interval $[0,255]$ while we chose $[0,1]$, the values obtained for a $98\%$ corrupted image are $\widetilde{\operatorname{AAE}}(f,g)=14.9$ and $\widetilde{\operatorname{MSE}}(f,g)=556.7$. (See Figure~\ref{fig:lena-AEE}.) In particular, the first one is slightly worse than the edge-enhancing diffusion presented in \cite[Table~1]{GWWBBS}, while the second one is better.
+We remark that, taking into account the fact that images in \cite{GWWBBS} are parametrized on the interval $[0,255]$ while we chose $[0,1]$, the values obtained for a $98\%$ corrupted image are $\widetilde{\operatorname{AAE}}(f,g)\sim14.9$ and $\widetilde{\operatorname{MSE}}(f,g)\sim556.7$. (See Figure~\ref{fig:lena-AEE}.) In particular, the first one is slightly worse than the edge-enhancing diffusion presented in \cite[Table~1]{GWWBBS}, while the second one is better.
 One could think this comparison not to be fair, due to the additional minimization procedure in \eqref{eq:metric}, but such minimization does not seem necessary in the case of \cite{GWWBBS}, since the algorithms used in that paper exactly preserve the values of the non-corrupted pixels.
 
 \begin{figure}
