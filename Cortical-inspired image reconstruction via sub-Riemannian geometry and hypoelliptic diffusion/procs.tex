@@ -688,13 +688,14 @@ In particular, we consider the following quantities for the quality of a reconst
   \widetilde{\operatorname{AAE}}(f,g) = \min_{a,b\in\mathbb R}\operatorname{AAE}(a f+b,g),\qquad
   \widetilde{\operatorname{MSE}}(f,g) = \min_{a,b\in\mathbb R}\operatorname{MSE}(a f+b,g).
 \end{equation}
-Here, we used the \emph{average absolute error (AEE)} and the \emph{mean squared error (MSE)}, as defined in \cite{GWWBBS}, given by
+Here, we use the \emph{average absolute error (AEE)} and the \emph{mean squared error (MSE)}, as defined in \cite{GWWBBS}. These essentially amount to a discrete version of the $L^1$ and $L^2$ norms, and are given by
 \begin{equation}
   \operatorname{AAE}(f,g) = \frac{1}{N}\sum_{i,j} |f_{i,j}-g_{i,j}|,\qquad
   \operatorname{MSE}(f,g) = \frac{1}{N}\sum_{i,j} |f_{i,j}-g_{i,j}|^2,
 \end{equation}
 where $N$ is the total number of pixels in the images $f=(f_{i,j})_{i,j}$ and $g=(g_{i,j})_{i,j}$. 
-The purpose of the additional minimizing procedure in \eqref{eq:metric} is to take into account possible differences in scaling induced by the AHE algorithm. 
+The need for the additional minimizing procedure in \eqref{eq:metric} is due to the fact that the diffusion of the AHE algorithm generates a scaling of values, including on non-corrupted pixels. Several experiments have shown that the effect of this scaling can be represented as $a f+b$ for some $a,b\in\R$.
+%The purpose of the additional minimizing procedure in \eqref{eq:metric} is to take into account possible differences in scaling induced by the AHE algorithm. 
 
 In Figure~\ref{fig:graph} we present the results obtained on a $256\times 256$ cropped version of the Lena image (the same used in \cite{GWWBBS}), with increasing percentages of corruption. 
 We remark that, taking into account the fact that images in \cite{GWWBBS} are parametrized on the interval $[0,255]$ while we chose $[0,1]$, the values obtained for a $98\%$ corrupted image are $\widetilde{\operatorname{AAE}}(f,g)\sim14.9$ and $\widetilde{\operatorname{MSE}}(f,g)\sim556.7$. (See Figure~\ref{fig:lena-AEE}.) In particular, the first one is slightly worse than the edge-enhancing diffusion presented in \cite[Table~1]{GWWBBS}, while the second one is better.
@@ -709,7 +710,7 @@ One could think this comparison not to be fair, due to the additional minimizati
   \end{minipage} 
   \begin{minipage}{.43\textwidth}
   \centering
-  \includegraphics[height=3.3cm]{imgs/lena-zoom-98-corr}\qquad
+  \includegraphics[height=3.3cm]{imgs/lena-zoom-98-corr}\quad
   \includegraphics[height=3.3cm]{imgs/lena-zoom-98-rec}
   \caption{Reconstruction of cropped version of Lena with 98\% of pixels missing. Compare with \cite[Figure~1]{GWWBBS}.}
   \label{fig:lena-AEE}    
