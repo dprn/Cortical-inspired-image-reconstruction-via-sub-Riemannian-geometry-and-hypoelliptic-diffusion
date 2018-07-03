@@ -100,27 +100,24 @@
 \section{Introduction}
 
 
-Since the founding works of Petitot, Citti, and Sarti \cite{petitot,citti-sarti}, where the foundations of the mathematical model (known as Citti-Petitot-Sarti model, CPS model in short) of the human primary visual cortex V1 have been posed, many authors worked on developing and applying these ideas to image processing and computer vision \cite{Duits2010,Duits2010a,Sanguinetti,Bredies13,Hladky}. Indeed, the main concept at the basis of the CPS model, i.e., that images in our brains are processed via a redundant representation taking into account local features such as local orientation, presents a somewhat new framework in which many tasks can be strongly simplified.
-\textcolor{blue}{
+Since the pioneering works of Petitot, Citti, and Sarti \cite{petitot,citti-sarti}, where the foundations of the mathematical model (known as Citti-Petitot-Sarti model, CPS model in short) of the human primary visual cortex V1 have been posed, many authors worked on developing and applying these ideas to image processing and computer vision \cite{Duits2010,Duits2010a,Sanguinetti,Bredies13,Hladky}. Indeed, the main concept at the basis of the CPS model, i.e., that images in our brains are processed via a redundant representation taking into account local features such as local orientation, presents a somewhat new framework in which many tasks can be strongly simplified.
   More precisely, a neuron in the primary visual cortex is represented by a point  $(x,y,\theta)\in\mathbb R^2\times \mathbb P^1$, where $(x,y)\in\mathbb R^2$ is its spatial preference, and $\theta\in\mathbb P^1$ is its direction preference.
   Then, an image on the visual plane, given by $f:\mathbb R^2\to \mathbb R$, is represented in the primary visual cortex by a distribution $\mathcal L f(x,y,\theta)=f(x,y)\delta_{Sf}(x,y,\theta)$, where $\delta_{Sf}$ is the Dirac mass of the surface $Sf\subset \mathbb R^2\times \mathbb P^1$. Here, $Sf$ is composed of the points $(x,y,\theta)$ such that $\theta\in\mathbb P^1$ is the direction of the level line of $f$ passing through $(x,y)\in\mathbb R^2$.
   The structure of neuronal connections in V1 then implies that the initial cortical stimulus $\mathcal Lf$ evolves 
 %  In this redundant representation, cortical stimuli $\Psi:\mathbb R^2\times \mathbb P^1\to \mathbb R$ spontaneously evolve 
   according to a heat-type equation $\partial_t \Psi=\Delta \Psi$, $\Psi|_{t=0}=\mathcal Lf$, where $\Delta$ is not the standard Euclidean Laplacian, but an hypoelliptic operator encoding the horizontal and vertical neuronal connections.
-  When the result of such 3D diffusion is projected back to the visual plane, we obtain a sort of anisotropic 2D diffusion that is very strong in the direction of the level lines of the image and very weak in the orthogonal one.}
+  When the result of such 3D diffusion is projected back to the visual plane, we obtain a sort of anisotropic 2D diffusion that is very strong in the direction of the level lines of the image and very weak in the orthogonal one.
   
-  \textcolor{blue}{
-  The combination of the redundant representation and hypoelliptic diffusion is particularly efficient for image processing tasks as inpainting. Nowadays this is a challenging problem treated with many different techniques, see, e.g., \cite{Bertalmio2000,Bertalmio2001,Masnou2002,Chan2002,Criminisi2004a} and references therein.}
+  The combination of the redundant representation and hypoelliptic diffusion is particularly efficient for image processing tasks as inpainting. Nowadays this is a challenging problem treated with many different techniques, see, e.g., \cite{Bertalmio2000,Bertalmio2001,Masnou2002,Chan2002,Criminisi2004a} and references therein.
 %In view of the many well-studied examples of contour completion operated by the human brain (see Figure~\ref{fig:modal}), one of the main problems that was attacked from this point of view has been that of image reconstruction, also known as image inpainting \cite{Bertalmio2000,Masnou2002,Chan2002,Criminisi2004a}.
-In this survey, we present the results obtained in a series of works \cite{Boscain2012a, Remizov2013, Boscain2014, ahe, gros-papier} in this context. 
+In this survey, we present the results obtained in a series of works \cite{Boscain2012a, Remizov2013, Boscain2014, ahe, gros-papier} in this framework. 
 
-\textcolor{blue}{
 It should be mentioned that efficient PDE-methods for image processing based on 2D anisotropic diffusions have been studied in various contexts. 
 In their simplest form, these methods use a 2D heat-like equation whose coefficients depend on the local structure of the image.  See, e.g., \cite{GWWBBS,Tschum}. 
 %As a consequence, they are not amenable to be treated via standard Fourier methods.
 We remark that the 2nd order Laplace-like operator appearing in these methods is anisotropic, but still elliptic.
 There exists also different approaches using non-linear evolutions or higher order PDEs.
-The method presented in this paper is deeply different, since the use of the cortical-inspired redundant representation allows to work with a 2nd order linear equation on a 3D space, and permits to consider an ``infinitely'' anisotropic (i.e., positive but not elliptic) equation. However, this equation is still hypoelliptic and can be efficiently solved via non-commutative Fourier analysis.}
+The method presented in this paper is deeply different, since the use of the cortical-inspired redundant representation allows to work with a 2nd order linear equation on a 3D space, and permits to consider an ``infinitely'' anisotropic (i.e., positive but not elliptic) equation. However, this equation is still hypoelliptic and can be efficiently solved via non-commutative Fourier analysis.
 %It is outside the scope of this paper to compare the results obtained by our techniques with those obtained by these 2D anisotropic methods.}
 
 The paper is divided in three parts, corresponding to different methods and purposes of image reconstruction.
@@ -146,13 +143,13 @@ In the first part, Section~\ref{s-petitot}, we introduce the geometry of the pro
 %  \label{fig:modal}
 %\end{figure}
 
-Indeed, in Section~\ref{s-hypo}, we present an image inpainting algorithm obtained by building on the curve reconstruction methods of the first part. In particular, we show that, via stochastic considerations, the latter can be extended to image reconstruction by considering the hypoelliptic diffusion associated with the a sub-Riemannian structure of V1. Although not very efficient, this method allows to reconstruct images with small corruptions. The main interest of this technique is to simulate the reconstruction of images by the visual cortex and, as we will show in the next section, to produce very effective image inpainting algorithms when coupled with other techniques. Moreover, thanks to the exploitation of non-commutative harmonic analysis techniques, the final algorithm that we present has the twofold advantage of, on one side, being very fast and easy to parallelize, and on the other, of not needing nor exploiting any information on the location and shape of the corruption.
+Indeed, in Section~\ref{s-hypo}, we present an image inpainting algorithm obtained by building on the curve reconstruction methods of the first part. In particular, we show that, via stochastic considerations, the latter can be extended to image reconstruction by considering the hypoelliptic diffusion associated with the sub-Riemannian structure of V1. Although not very efficient, this method allows to reconstruct images with small corruptions. The main interest of this technique is to simulate the reconstruction of images by the visual cortex and, as we will show in the next section, to produce very effective image inpainting algorithms when coupled with other techniques. Moreover, thanks to the exploitation of non-commutative harmonic analysis techniques, the final algorithm that we present has the twofold advantage of, on one side, being very fast and easy to parallelize, and on the other, of neither needing nor exploiting any information on the location and shape of the corruption.
 
 Finally, in the third and last part, Section~\ref{s-corr}, we collect some results detailing how to ameliorate the above hypoelliptic diffusion method by taking into account the location of the corruption. In particular, we show how these methods allow to obtain image reconstructions of highly corrupted images (e.g.\ with up to 97\% of pixel missing), placing themselves at the same level as state-of-the-art inpainting methods.
 
-We conclude this brief introduction by observing that, experimentally, the threshold of the maximal amount of corruption that the pure hypoelliptic diffusion method can manage looks very close to the threshold of corruption above which our brain can recognize the underlying image. This fact could be seen as a validation of the CPS model with pure hypoelliptic diffusion. On the other hand, the methods presented in the last part completely transcend such problem, thus suggesting that, although based on neurophysiological ideas, they do not reflect any real mechanism of V1.
+We conclude this brief introduction by observing that, experimentally, the threshold of the maximal amount of corruption that the pure hypoelliptic diffusion method can manage looks very close to the threshold of corruption above which our brain can recognize the underlying image. This fact could be seen as a validation of the CPS model with pure hypoelliptic diffusion. On the contrary, the methods presented in the last part completely transcend such problem, thus suggesting that, although based on neurophysiological ideas, they do not reflect real mechanisms of V1.
 
-While the results obtained with our methods, are comparable with the state of the art in image inpainting, here our purpose is not to provide a comparison with the existing methods, but to present how ideas from neurophysiology can be exploited for image processing tasks. {\color{magenta} Nevertheless, a brief study of the quality of the reconstructions is presented in Section~\ref{sec:comparison}, together with a comparison with some similar methods, as those presented in \cite{cao,GWWBBS}.} An interesting line of investigation would be to use our framework together with other methods based on totally different ideas as for instance exemplar-based methods, e.g., \cite{Bredies13,Facciolo}.
+While the results obtained with our methods, are comparable with the state of the art in image inpainting, here our purpose is not to provide a comparison with the existing methods, but to present how ideas from neurophysiology can be exploited for image processing tasks.  Nevertheless, a brief study of the quality of the reconstructions is presented in Section~\ref{sec:comparison}, together with a comparison with some similar methods, as those presented in \cite{cao,GWWBBS}. An interesting line of investigation would be to use our framework in combination with other methods based on totally different ideas as for instance exemplar-based methods, e.g., \cite{Bredies13,Facciolo}.
 
 
 
@@ -465,7 +462,7 @@ Thus, the linear system appearing at each step of the Crank-Nicolson method can 
 \subsection{Numerical experiments}
 
 When implementing the pure hypoelliptic diffusion, there are essentially 3 parameters to be tuned: the number of angles $N$ for the semi-discretization of the equation on $SE(2,N)$, the weight parameter $\beta$ appearing in the operator $\Delta$, and the total time of diffusion $T$.
-Clearly, for performance reasons, one would like to have $N$ as small as possible. Indeed, numerical experiments suggests that it suffices to choose $N=30$, as increasing $N$ beyond this threshold does not affect the resulting image in any visible way. On the other hand, the parameters $\beta$ and $T$ have to be tuned by hand and the optimal choice seems to be deeply sensitive to the image to be treated (and of course to the desired result).
+Clearly, for performance reasons, one would like to have $N$ as small as possible. Indeed, numerical experiments suggests that it suffices to choose $N=30$, as increasing $N$ beyond this threshold does not affect the resulting image in any visible way. On the other hand, the parameters $\beta$ and $T$ have to be tuned by hand and the optimal choice seems to be deeply sensitive to the image and type of corruption to be treated (and of course to the desired result).
 
 In Figure~\ref{fig:PH}, we present a sequence of images showing the effect of the pure hypoelliptic diffusion with two different choices for $\beta$ at different times.
 In particular, this shows how for large values of $\beta$, the effect of the pure hypoelliptic diffusion on $PT\mathbb R^2$ becomes, after the projection, close to an isotropic diffusion on $\mathbb R^2$.
@@ -680,10 +677,10 @@ This effect is discussed in \cite{ahe}.
 %\end{figure}
 %}
 
-{\color{magenta}
+
 \section{Quality of reconstruction}\label{sec:comparison}
 
-An objective comparison of the quality of the reconstruction is a problem of well-known difficulty, see, for instance, [34, 40, 42]. Moreover, such
+An objective comparison of quality of reconstructions is a problem of well-known difficulty, see, for instance, [34, 40, 42]. Moreover, such
 a measure will forcibly depend on the expected application.
 Nevertheless, in this section we present some results obtained with a variant of the metric used in \cite{GWWBBS}.
 In particular, we consider the following quantities for the quality of a reconstruction $f$ of a corrupted version of an image $g$:
@@ -728,12 +725,12 @@ Finally, in Figure~\ref{fig:masnou}, we present a comparison of two reconstructi
   \caption{Comparison of reconstruction of the image to the left with the AHE algorithm (\emph{middle}) and the methods in \cite{cao} (\emph{right}).}
   \label{fig:masnou}
 \end{figure}
-}
+
 
 \section{Conclusions}
 
 In this paper we presented several image inpainting algorithms based on hypoelliptic diffusion. Although pure hypoelliptic diffusion allows to obtain reasonable inpaints of images with small corrupted regions, we showed that coupling such diffusion with heuristic methods exploiting the full knowledge of the location of the corruption allows to obtain very efficient reconstructions. 
-\textcolor{magenta}{In particular, in Section~\ref{sec:comparison} we showed that the final method we presented, the AHE algorithm, yields reconstructions that are on par with the current state-of-the-art in local PDE-based methods.}
+In particular, in Section~\ref{sec:comparison} we showed that the final method we presented, the AHE algorithm, yields reconstructions that are on par with the current state-of-the-art in local PDE-based methods.
 We also mention that the techniques presented in this paper can be applied to color images, simply by treating separately the three color channels. Some examples are provided in Figure~\ref{fig:color-images}.
 
 It is interesting to notice that when the image is so corrupted that our visual system is not able to recognize it, as it happens, for instance, for the corrupted image presented in Figure~\ref{fig:comparison}, the use of pure hypoelliptic diffusion does not help it.
